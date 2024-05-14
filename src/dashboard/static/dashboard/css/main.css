@@ -45,6 +45,7 @@ html {
 body {
 	/* background: var(--grey); */
 	overflow-x: hidden;
+	font-family: var(--teacher);
 }
 
 
@@ -94,8 +95,9 @@ body {
 	height: 100vh;
 	background-color: var(--light);
 	z-index: 9;
-	font-family: var(--teacher);
 	font-weight: 700;
+	overflow-x: hidden;
+	scrollbar-width: none;
 }
 
 #side-bar .first-menu {
@@ -177,19 +179,44 @@ body {
 /* START NAVBAR */
 
 .navbar-section {
-	height: 50px;
+	height: 60px;
 	background: var(--light);
 	position: sticky;
 }
 
-.navbar-section::after {
+/* .navbar-section::after {
 	content: '';
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	top: 50px;
+	top: 60px;
 	border-top-left-radius: 50%;
-	box-shadow: -5px -5px 0 var(--light);
+	box-shadow: -10px -10px 0 var(--light);
+} */
+
+
+.top-redius {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	z-index: 9999;
+	top: 60px;
+	border-top-left-radius: 50%;
+	box-shadow: -10px -10px 0 var(--light);
+}
+
+.search-bar-c {
+
+
+}
+
+.search-bar-c input {
+	border: none;
+	outline: none;
+	background: var(--light-grey);
+	border-radius: 15px 0 0 15px;
+	padding: 0 15px;
 }
 
 
