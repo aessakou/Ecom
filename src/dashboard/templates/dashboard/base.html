@@ -16,26 +16,50 @@
 <body>
 	
 
-	<div class="container">
-		<section>
+	<div class="base-container">
+
+		
+		<section class="main-sidebar">
+			
 			<div id="side-bar">
-				<div>
-					<h1>Brand</h1>
+				<div >
+					<a class="brand" href="#">
+						<img src="{% static 'dashboard/images/blog-icon.png' %}" alt="#" width="30px">
+						<span>Brand</span>
+					</a>
 				</div>
 				<div class="first-menu">
 					<ul>
 						<li class="active"><a href="#">Dashboard</a></li>
-						<li class="active"><a href="#">My Store</a></li>
-						<li class="active"><a href="#">Analytics</a></li>
-						<li class="active"><a href="#">Orders</a></li>
-						<li class="active"><a href="#">Team</a></li>
+						<li class=""><a href="#">My Store</a></li>
+						<li class=""><a href="#">Analytics</a></li>
+						<li class=""><a href="#">Orders</a></li>
+						<li class=""><a href="#">Team</a></li>
 					</ul>
+					<div class="pt-3 second-menu">
+						<ul>
+							<li class=""><a href="#">Settings</a></li>
+							<li><a href="#">Logout</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="second-menu">
-					<ul>
-						<li><a href="#">Settings</a></li>
-						<li><a href="#">Logout</a></li>
-					</ul>
+			</div>
+		</section>
+
+
+		<section class="content">
+			<div class="">
+				<div class="navbar-section">
+					<nav class="">
+
+					</nav>
+				</div>
+				<div class="window-p">
+					<div>
+						{% block content %}
+
+						{% endblock content %}
+					</div>
 				</div>
 			</div>
 		</section>
