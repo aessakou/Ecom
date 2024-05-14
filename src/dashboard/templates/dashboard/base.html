@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
+	<link rel="shortcut icon" href="{% static 'dashboard/images/favicon.ico' %}">
+	{% if title %}
+	<title>Dashboard | {{title}}</title>
+	{% else %}
+	<title>Dashboard</title>
+	{% endif %}
+</head>
+<body>
+	
+
+	<div class="container">
+		<section>
+			<div id="side-bar">
+				<div>
+					<h1>Brand</h1>
+				</div>
+				<div class="first-menu">
+					<ul>
+						<li class="active"><a href="#">Dashboard</a></li>
+						<li class="active"><a href="#">My Store</a></li>
+						<li class="active"><a href="#">Analytics</a></li>
+						<li class="active"><a href="#">Orders</a></li>
+						<li class="active"><a href="#">Team</a></li>
+					</ul>
+				</div>
+				<div class="second-menu">
+					<ul>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

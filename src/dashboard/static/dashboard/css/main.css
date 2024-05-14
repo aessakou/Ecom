@@ -1,0 +1,87 @@
+@font-face {
+	font-family: 'Teachers';
+	src: url('../fonts/static/Teachers-Regular.ttf') format("truetype"),
+		 local('Teachers');
+
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+
+:root {
+}
+
+body {
+	background-color: #cfcfcf;
+}
+
+
+/* START SIDEBAR */
+
+#side-bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 20vw;
+	height: 100vh;
+	background-color: #eee;
+	z-index: 999;
+}
+
+#side-bar .first-menu {
+	margin-top: 15vh;
+	height: 35vh;
+}
+
+#side-bar .first-menu ul {
+	/* height: inherit; */
+	/* margin-top: 5vh; */
+	padding: 1vh 0;
+}
+
+#side-bar .first-menu ul li {
+	height: 6vh;
+	margin-top: 1vh;
+	margin-left: 1vw;
+}
+
+.active {
+	border-radius: 48px;
+	box-shadow: 0 0 0 4px #cfcfcf;
+}
+
+#side-bar .first-menu ul li a {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding-left: 2.2vw;
+	color: gray;
+}
+
+
+
+#side-bar .second-menu {
+	margin-top: 5vh;
+	height: 20vh;
+	background-color: blueviolet;
+}
+
+
+
+
+/* END SIDEBAR */
