@@ -8,9 +8,9 @@
 	<link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
 	<link rel="shortcut icon" href="{% static 'dashboard/images/favicon.ico' %}">
 	{% if title %}
-	<title>Dashboard | {{title}}</title>
+	<title>Store | {{title}}</title>
 	{% else %}
-	<title>Dashboard</title>
+	<title>Store</title>
 	{% endif %}
 </head>
 <body>
@@ -23,14 +23,14 @@
 			
 			<div id="side-bar">
 				<div >
-					<a class="brand" href="#">
+					<a class="brand" href="{% url 'dashboard' %}">
 						<img src="{% static 'dashboard/images/blog-icon.png' %}" alt="#" width="30px">
 						<span>Brand</span>
 					</a>
 				</div>
 				<div class="first-menu">
 					<ul>
-						<li class="active"><a href="#">Dashboard</a></li>
+						<li class="active"><a href="{% url 'dashboardp' %}">Dashboard</a></li>
 						<li class=""><a href="#">My Store</a></li>
 						<li class=""><a href="#">Analytics</a></li>
 						<li class=""><a href="#">Orders</a></li>
@@ -56,9 +56,7 @@
 							<div class="search-bar-c">
 								<input type="search" name="Search" placeholder="Search..." id="">
 								<button type="submit" class="search-btn">
-									<i>
-										<img src="{% static 'dashboard/images/search_cr23.svg' %}" alt="#" width="25px">
-									</i>
+									<i class="text-dark  fas fa-search"></i>
 								</button>
 							</div>
 						</form>
@@ -70,11 +68,15 @@
 						</label>
 						<div>
 							<a href="#">
-								<img src="" alt="">
+								<div class="notif-icon">
+									<div class="new-notif"><span>99+</span></div>
+								</div>
 							</a>
 						</div>
 						<div >
-							<img src="" alt="Profile" width="30px">
+							<a href="#">
+								<img src="{% static 'dashboard/images/default_profile_pic.jpeg' %}" alt="" width="45px" class="img-fluid rounded-circle">
+							</a>
 						</div>
 					</div>
 				</nav>
@@ -90,5 +92,6 @@
 	</div>
 
 	<script src="{% static 'dashboard/js/base.js' %}"></script>
+	<script src="{% static 'dashboard/js/fontawesome-all.min.js' %}"></script>
 </body>
 </html>
