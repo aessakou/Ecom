@@ -328,3 +328,12 @@ body.darkmode {
 
 /* END NAVBAR  */
 
+
+
+/* START CONTENT */
+
+.window-p {
+	color: var(--dark);
+}
+
+/* END CONTENT */
