@@ -50,16 +50,34 @@
 		<section class="content">
 			<div class="">
 				<div class="top-redius"></div>
-				<div class="navbar-section justify-content-center d-flex align-items-center">
-					<nav class="">
+				<nav class="navbar-section d-flex align-items-center">
+					<div class="d-flex align-items-center">
 						<form action="#">
-							<div class="search-bar-c d-flex">
+							<div class="search-bar-c">
 								<input type="search" name="Search" placeholder="Search..." id="">
-								<button></button>
+								<button type="submit" class="search-btn">
+									<i>
+										<img src="{% static 'dashboard/images/search_cr23.svg' %}" alt="#" width="25px">
+									</i>
+								</button>
 							</div>
 						</form>
-					</nav>
-				</div>
+					</div>
+					<div class="right-navbar d-flex align-items-center">
+						<input type="checkbox" id="switch-mode" hidden>
+						<label for="switch-mode" class="switch-button">
+							<small id="mode-message">Light</small>
+						</label>
+						<div>
+							<a href="#">
+								<img src="" alt="">
+							</a>
+						</div>
+						<div >
+							<img src="" alt="Profile" width="30px">
+						</div>
+					</div>
+				</nav>
 				<div class="window-p">
 					<div>
 						{% block content %}
@@ -71,5 +89,6 @@
 		</section>
 	</div>
 
+	<script src="{% static 'dashboard/js/base.js' %}"></script>
 </body>
 </html>
