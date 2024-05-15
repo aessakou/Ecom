@@ -1,0 +1,130 @@
+:root {
+	--teacher: 'Teachers', sans-serif;
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+
+	--dark: #222;
+	--light: #f9f9f9;
+	--grey: #eee;
+	--dark-grey: #8f8f8f;
+	--light-grey: #cfcfcf;
+	--blue: #156ffe;
+	--dark-blue: #0d0c1f;
+    --light-blue:  #0bcfe9;
+    --light-green: var(--light-blue);
+
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+
+
+body {
+	/* background: var(--grey); */
+	overflow-x: hidden;
+	font-family: var(--teacher);
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #9eb3c4;
+}
+
+.box {
+    width: 300px;
+    padding: 40px;
+    padding-top: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 2px 5px 24px #444;
+}
+
+.box h1 {
+    color: var(--blue);
+    font-weight: 800;
+    text-shadow: 0px 0px 3px var(--dark-blue);
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+.box input[type = "text"],.box input[type = "password"] {
+    border: 0;
+    font-size: 1em;
+    font-weight: 700;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid var(--blue);
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input[type = "text"]:focus,.box input[type = "password"]:focus {
+    width: 280px;
+    border-color: var(--blue);
+}
+.forgPwd {
+    text-decoration: none;
+    color:purple;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+/* .forgPwd:hover {
+    text-decoration:underline;
+} */
+
+.box input[type = "submit"] {
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    /* border: 1px solid var(--light-blue); */
+    background: var(--dark-grey);
+    padding: 14px 40px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    border: none;
+}
+
+.box input[type = "submit"]:hover {
+    background: var(--light-blue);
+    background: teal;
+}
+
+
+.brand-box {
+    display: flex;
+    top: 14%;
+    height: 70px;
+    padding: 10px 40px;
+}
+
+.brand-box h1 {
+    margin: auto;
+}
