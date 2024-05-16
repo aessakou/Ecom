@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'dashboard/base.html' %}
+
+
+{% block content %}
+
+<div class="logout-class">
+	<h1>logout</h1>
+	<p>Are you sure you want to log out?</p>
+	<div>
+		<input type="checkbox" name="logoutsure" id="logoutsure">
+		<span>Yes I'm sure!</span>
+	</div>
+	<a href="{% url 'logoutsure' %}">Logout</a>
+</div>
+
+{% endblock content %}

@@ -22,6 +22,7 @@ a {
 
 html {
 	overflow-x: hidden;
+    user-select: none;
 }
 
 
@@ -48,7 +49,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f0f0f0;
+    background-color: var(--light);
     text-align: center;
     border-radius: 20px;
     box-shadow: 2px 5px 24px #444;

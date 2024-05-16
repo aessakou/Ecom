@@ -337,3 +337,45 @@ body.darkmode {
 }
 
 /* END CONTENT */
+
+
+/* START LOGOUT CLASS */
+
+.logout-class {
+	margin-top: 20vh;
+	margin-left: 20vw;
+	width: 40vw;
+	border: solid;
+	text-align: center;
+	padding: 2vh 0;
+	font-size: 2vw;
+	border-radius: 15px;
+	background: var(--light);
+}
+
+.logout-class h1 {
+	font-weight: 900;
+	color: var(--blue);
+}
+
+.logout-class p {
+	color: orangered;
+	border: 1px dashed;
+	/* margin: auto; */
+	margin-left: 1vw;
+	margin-right: 1vw;
+	border-radius: 5px;
+	background: #ffa60086;
+
+}
+
+.logout-class a {
+	font-weight: 600;
+	background: #ff44009e;
+	border-radius: 5px;
+	padding: 0 1vw;
+	border: 1px solid #ff44009e;
+	color: black;
+}
+
+/* END LOGOUT CLASS */
