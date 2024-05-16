@@ -3,36 +3,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'users/css/admin_login.css' %}">
-    <title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/admin_login.css' %}">
+	<link rel="shortcut icon" href="{% static 'dashboard/images/favicon.ico' %}">
+	{% if title %}
+	<title>{{title}}</title>
+	{% else %}
+	<title>Admin Login</title>
+	{% endif %}
 </head>
 <body>
 
-<div>
-    <div class="box brand-box">
-        <img src="" alt="">
-        <h1>Brand</h1>
+    <div class="container">
+        <div class="login-class">
+            <div class="box brand-box">
+                <img src="{% static 'dashboard/images/blog-icon.png' %}" alt="|" width="40px" height="35px">
+                <h1>Brand</h1>
+            </div>
+            <div class="box">
+                <h1>Admin Login</h1>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="username" name="username" placeholder="Username" maxlength="20">
+                    <input type="password" name="password" placeholder="Password" maxlength="34" minlength="8">
+                    <input type="submit" name="" value="Log In">
+                </form>
+                <div class="forgt-pwd">
+                    <span>Forgotten password? <a href="#">click here</a></span>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<section class="box">
-    <h1>Admin Login</h1>
-    <!-- {% if messages %}
-    {% for message in messages %}
-    <div>
-        <h4>{{message}}</h4>
-    </div>
-    {% endfor %}
-    {% endif %} -->
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username" maxlength="20">
-        <input type="password" name="password" placeholder="Password" maxlength="34" minlength="8">
-        <input type="submit" name="" value="Log In">
-    </form>
-    <a href="#" class="forgPwd">Forgotten password?</a>
-</section>
-    
+
     </body>
 </html>
