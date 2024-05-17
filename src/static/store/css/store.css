@@ -38,8 +38,9 @@
 
 a {
 	text-decoration: none;
-	color: var(--linkc);
-	font-weight: 600;
+	/* color: var(--linkc); */
+	font-weight: inherit !important;
+	color: inherit;
 }
 
 li {
@@ -65,6 +66,20 @@ body.darkmode {
 	--light: #232433;
 	--light-grey: #11102a;
 	--dark: #ddd;
+}
+
+.bg-body-tertiary {
+	background: #055160a0 !important;
+}
+
+.cart-icon {
+	padding: 0;
+}
+
+.cart-icon .svg-inline--fa {
+	height: 1.8em;
+	color: var(--light-green);
+	color: gold;
 }
 
 /* .main-navbar {
