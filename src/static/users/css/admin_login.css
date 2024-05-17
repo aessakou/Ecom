@@ -52,7 +52,7 @@ body {
     width: 400px;
     text-align: center;
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: calc((50% - 200px));
     color: var(--blue);
 }
@@ -116,15 +116,17 @@ body {
     cursor: pointer;
     outline: none;
     color: var(--dark);
-    background: var(--dark-grey);
+    /* background: var(--dark-grey); */
+    background-color:#0e6187ce;
+    background-color: teal;
     margin: auto;
+    text-shadow: 0 0 2px var(--greyblue);
 }
 
 .forgt-pwd {
     font-weight: 600;
-    border-top: var(--dark-grey);
     margin: 25px auto;
-    border-top: 1px solid var(--dark-grey);
+    border-top: 1px solid var(--light-grey);
     padding-top: 35px ;
     width: 220px;
     color: var(--dark-blue);
