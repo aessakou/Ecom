@@ -2,7 +2,44 @@
 {% extends 'store/base.html' %}
 
 {% block content %}
+{% load static %}
 
-	<h1>Store</h1>
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md">
+			<div class="card-group mt-3">
+				<div class="card m-3">
+					<img class="card-img" src="{% static 'store/images/product.png' %}" alt="">
+					<h3 class="card-title border-bottom p-2">card</h3>
+					<div class="p-2">
+						<button class="btn btn-outline-success">Add to cart</button>
+						<button class="btn btn-outline-secondary" >View</button>
+						<h3 class="d-inline-block float-end">20$</h3>
+					</div>
+				</div>
+				<div class="card m-3">
+					<img class="card-img" src="{% static 'store/images/product.png' %}" alt="">
+					<h3 class="card-title border-bottom p-2">card</h3>
+					<div class="p-2">
+						<button class="btn btn-outline-success">Add to cart</button>
+						<button class="btn btn-outline-secondary" >View</button>
+						<h3 class="d-inline-block float-end">20$</h3>
+						
+					</div>
+				</div>
+				<div class="card m-3">
+					<img class="card-img" src="{% static 'store/images/product.png' %}" alt="">
+					<h3 class="card-title border-bottom p-2">card</h3>
+					<div class="p-2">
+						<button class="btn btn-outline-success">Add to cart</button>
+						<button class="btn btn-outline-secondary" >View</button>
+						<h3 class="d-inline-block float-end">20$</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<!-- <img class="card-img" src="{% static 'store/images/blog-icon.png' %}" alt=""> -->
 {% endblock content %}
