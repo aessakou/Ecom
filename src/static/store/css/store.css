@@ -23,6 +23,7 @@
 	--greyblue: #9eb3c4;
 	--linkc: #3e103e;
 	--s-blue: #5ebcc6;
+	--bluegreen: #055160a0;
 
 
 	--nb-padd: 5px;
@@ -69,18 +70,73 @@ body.darkmode {
 }
 
 .bg-body-tertiary {
-	background: #055160a0 !important;
+	background: var(--bluegreen) !important;
 }
 
 .cart-icon {
 	padding: 0;
+	margin: auto 1em;
 }
 
 .cart-icon .svg-inline--fa {
-	height: 1.8em;
+	height: 1.5em;
 	color: var(--light-green);
 	color: gold;
 }
+
+.cart-icon::after {
+	content: '0';
+	position: absolute;
+	width: 15px;
+	height: 20px;
+	color: var(--light);
+	background: red;
+	font-size: smaller;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.d-flex-center-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* .arrow-up-icon {
+	width: 25px;
+	height: 50px;
+	background: #0d0c1f;
+	position: absolute;
+	rotate: -90deg;
+	margin-bottom: 10px;
+}
+
+.arrow-up-icon::after {
+	content: '';
+	width: 20px;
+	height: 45px;
+	background: green;
+	position: absolute;
+	rotate: -45deg;
+	margin-left: -3px;
+	top: -16px;
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;
+}
+
+.arrow-up-icon::before {
+	content: '';
+	width: 20px;
+	height: 45px;
+	background: red;
+	position: absolute;
+	rotate: 45deg;
+	margin-left: -3px;
+	top: 22px;
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;
+} */
+
 
 /* .main-navbar {
 	background: var(--s-blue);
