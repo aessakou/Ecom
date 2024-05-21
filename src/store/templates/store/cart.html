@@ -16,13 +16,13 @@
 			
 			<div class="d-flex justify-content-between align-items-center m-3">
 				<div>
-					<h5 class="m-auto">Items: <strong>2</strong></h5>
+					<h5 class="m-auto">Items: <strong>{{items}}</strong></h5>
 				</div>
 				<div>
-					<h5 class="m-auto">Total: <strong>40$</strong></h5>
+					<h5 class="m-auto">Total: <strong>{{total|floatformat:2}}$</strong></h5>
 				</div>
 				<div>
-					<a class="btn btn-success float-end" href="{% url 'checkout' %}">checkout</a>
+					<a class="btn btn-success float-end" href="{% url 'checkout' %}">Checkout</a>
 				</div>
 			</div>
 		</div>
@@ -41,8 +41,8 @@
 			{% for orderitem in orderitems %}
 			
 			<div class="d-flex align-items-stretch text-center p-2 m-1">
-				<div style="flex: 2;">
-					<img class="img-thumbnail" src="{% if orderitem.product.image %}../static/images/{{orderitem.product.image}}{% else %}{% static 'store/images/product.png' %}{% endif %}" alt="">
+				<div style="flex: 2;" class="product-img">
+					<img class="img-thumbnail" src="{% if orderitem.product.image %}../static/images/{{orderitem.product.image}}{% else %}{% static 'store/images/default_img.png' %}{% endif %}" alt="">
 				</div>
 				<div class="d-flex-center-center " style="flex: 2;">{{orderitem.product}}</div>
 				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.product.price}}</div>

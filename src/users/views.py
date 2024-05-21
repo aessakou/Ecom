@@ -28,4 +28,4 @@ def logout(request):
 	context = {
 		'title': 'Logout',
 	}
-	return render(request, 'users/admin_login.html', context)
+	return render(request, 'users/logout.html', context)

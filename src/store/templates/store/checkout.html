@@ -56,20 +56,24 @@
 				</div>
 				<h3 class="border-bottom m-2 pb-2 text-center"><strong>Order Summary</strong></h3>
 				<div>
+					{% for item in orderitems %}
+					
 					<div class="d-flex align-items-stretch text-center p-2 m-1">
-						<div style="flex: 2;">
-							<img class="img-thumbnail" src="{% static 'store/images/product.png' %}" alt="">
+						<div style="flex: 2;" class="">
+							<img class="summary-img img-thumbnail" src="{{item.product.imageURL}}" alt="">
 						</div>
-						<div class="d-flex-center-center " style="flex: 2;">Product 1</div>
-						<div class="d-flex-center-center " style="flex: 1;">20</div>
+						<div class="d-flex-center-center " style="flex: 2;">{{item.product}}</div>
+						<div class="d-flex-center-center " style="flex: 1;">{{item.product.price}}</div>
 						<div class="d-flex-center-center" style="flex: 1;">
-							<span class="p-2">x2</span>
+							<span class="p-2">x{{item.quantity}}</span>
 						</div>
 					</div>
+
+					{% endfor %}
 				</div>
 				<div class="m-1 p-3 pt-2 pb-2">
-					<h4>Items: <span>1</span></h4>
-					<h4>Total: <span>40$</span></h4>
+					<h4>Items: <span>{{items}}</span></h4>
+					<h4>Total: <span>{{total|floatformat:2}}$</span></h4>
 				</div>
 			</div>
 		</div>

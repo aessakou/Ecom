@@ -21,16 +21,35 @@ class Product(models.Model):
 
 	def __str__(self):
 		return self.name
+	
+	@property
+	def imageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
 
 
 class Order(models.Model):
 	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
 	date_order = models.DateTimeField(auto_now_add=True)
-	complate = models.BooleanField(default=False, null=True, blank=False)
+	complete = models.BooleanField(default=False, null=True, blank=False)
 	transaction_id = models.CharField(max_length=200, null=True)
 
 	def __str__(self):
 		return str(self.id)
+	
+	@property
+	def get_order_total(self):
+		orderitems = self.orderitem_set.all()
+		return sum([item.total_cost for item in orderitems])
+	
+	@property
+	def get_order_items(self):
+		orderitems = self.orderitem_set.all()
+		return sum([item.quantity for item in orderitems])
+
 
 class OrderItem(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
