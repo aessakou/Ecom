@@ -42,10 +42,11 @@
 			
 			<div class="d-flex align-items-stretch text-center p-2 m-1">
 				<div style="flex: 2;" class="product-img">
-					<img class="img-thumbnail" src="{% if orderitem.product.image %}../static/images/{{orderitem.product.image}}{% else %}{% static 'store/images/default_img.png' %}{% endif %}" alt="">
+					<div style="width: 10%; height: 100%; background: goldenrod;"></div>
+					<img class="w-100" src="{{orderitem.product.imageURL}}" alt="">
 				</div>
 				<div class="d-flex-center-center " style="flex: 2;">{{orderitem.product}}</div>
-				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.product.price}}</div>
+				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.product.price|floatformat:2}}$</div>
 				<div class="d-flex-center-center" style="flex: 1;">
 					<span class="p-2">{{orderitem.quantity}}</span>
 					<div class="d-grid">
@@ -53,10 +54,12 @@
 						<a href="#"><i class="fas fa-arrow-down"></i></a>
 					</div>
 				</div>
-				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.total_cost}}</div>
+				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.total_cost|floatformat:2}}$</div>
 			</div>
 			
 			{% endfor %}
+			
+
 
 		</div>
 	</div>

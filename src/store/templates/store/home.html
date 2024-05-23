@@ -3,42 +3,6 @@
 
 {% block content %}
 {% load static %}
-<!-- <h6 class="d-inline-block text-danger me-1 mb-0">30$</h6> -->
-
-
-	<!-- <div class="row"> -->
-		
-		<!-- <div class="col-md-4">
-			<div class="card-group mt-3">
-				<div class="card">
-					<div class="product-img">
-						<img class="img-thumbnail" src="{{product.imageURL}}" alt="">
-					</div>
-					<h3 class="card-title p-2 mb-0">{{product.name}}</h3>
-					<div class="border-top p-2 pt-3 user-select-none">
-						<a class="btn btn-outline-success" href="#">Add to cart</a>
-						<a class="btn btn-outline-secondary"  href="#">View</a>
-						<div class="d-inline-block float-end prix-block">
-							<h4 class="d-inline-block float-end mb-0 pt-1">{{product.price|floatformat:2}}$</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- {% for product in products %} -->
-		<!-- <div class="items-column mt-3"> -->
-			
-		<!-- </div> -->
-
-		<!-- {% endfor %} -->
-		<!-- <div class="items-column mt-3">
-			
-		</div>
-		<div class="items-column mt-3">
-			
-		</div> -->
-	
-	<!-- </div> -->
 
 	<div>
 
@@ -49,7 +13,7 @@
 
 			<div class="items-column">
 				<div class="card">
-					<img class="img-thumbnail" src="{{product.imageURL}}" alt="">
+					<img class="img-fluid" src="{{product.imageURL}}" alt="">
 					<h4 class="card-title p-2 mb-0 fn-z-t">{{product.name}}</h4>
 					<div class="border-top p-2 pt-3 user-select-none">
 						<a class="btn btn-outline-success fn-z" href="#">Add to cart</a>
@@ -64,25 +28,6 @@
 
 			{% endfor %}
 			
-			{% for product in products %}
-
-
-			<div class="items-column">
-				<div class="card">
-					<img class="img-thumbnail" src="{{product.imageURL}}" alt="">
-					<h4 class="card-title p-2 mb-0">{{product.name}}</h4>
-					<div class="border-top p-2 pt-3 user-select-none">
-						<a class="btn btn-outline-success" href="#">Add to cart</a>
-						<a class="btn btn-outline-secondary"  href="#">View</a>
-						<div class="d-inline-block float-end prix-block">
-							<h4 class="d-inline-block float-end mb-0 pt-1">{{product.price|floatformat:2}}$</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			{% endfor %}
-
 
 		</div>
 
