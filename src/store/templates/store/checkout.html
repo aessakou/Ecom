@@ -13,11 +13,11 @@
 					{% if not user.is_authenticated %}
 					<div class="row m-1 mt-3 mb-2 pb-3 border-bottom">
 						<div class="col-md-5">
-							<input type="name" class="form-control" placeholder="Name">
+							<input type="text" name="name" class="form-control" placeholder="Name">
 						</div>
 						
 						<div class="col-md-7">
-							<input type="email" class="form-control" placeholder="Email">
+							<input type="text" name="email" class="form-control" placeholder="Email">
 						</div>
 					</div>
 					{% endif %}
@@ -25,23 +25,23 @@
 					<div class="row m-1 mb-2 mt-0" id="shipping-info">
 						<h3 class="border-bottom p-3 pt-2" >Shipping Information</h3>
 						<div class="col-md-6 mt-2">
-							<input type="text" class="form-control" placeholder="City">
+							<input type="text" name="city" class="form-control" placeholder="City">
 						</div>
 						
 						<div class="col-md-6 mt-2">
-							<input type="text" class="form-control" placeholder="State">
+							<input type="text" name="state" class="form-control" placeholder="State">
 						</div>
 						
 						<div class="col-md-6 mt-3">
-							<input type="text" class="form-control" placeholder="Phone Number">
+							<input type="text" name="phonenumber" class="form-control" placeholder="Phone Number">
 						</div>
 						
 						<div class="col-md-6 mt-3">
-							<input type="text" class="form-control" placeholder="Zip">
+							<input type="text" name="zipcode" class="form-control" placeholder="Zip">
 						</div>
 	
 						<div class="col-12 mt-3">
-							<input type="text" class="form-control" placeholder="Address">
+							<input type="text" name="address" class="form-control" placeholder="Address">
 						</div>
 						
 					</div>
@@ -56,11 +56,7 @@
 			<div class="card mt-2">
 				<h3 class="border-bottom m-2 pb-2 text-center"><strong>Payment methods</strong></h3>
 				<div class="col-12 p-3">
-					<a class="btn btn-primary col-12 mb-1">Pypal</a>
-					<a class="btn btn-primary col-12 mb-1">Pypal</a>
-					<a class="btn btn-primary col-12 mb-1">Pypal</a>
-					<a class="btn btn-primary col-12 mb-1">Pypal</a>
-					<a class="btn btn-primary col-12 mb-1">Pypal</a>
+					<a class="btn btn-primary col-12 mb-1" id="payment-button">Paypal</a>
 
 				</div>
 			</div>
@@ -122,6 +118,84 @@
 		document.getElementById('submit-form').classList.add('disabled');
 		document.getElementById('payment-methods').classList.remove('d-none');
 	});
+
+	document.getElementById('payment-button').addEventListener('click', function(){
+		sunmitDormData();
+	});
+
+	var total = '{{total}}'
+	function sunmitDormData(){
+		console.log('submit form info');
+
+		var userformdata = {
+			'username':null,
+			'email':null,
+			'total': total,
+		}
+
+		var shippinginfo = {
+			'city':null,
+			'state':null,
+			'zipcode':null,
+			'address':null,
+			'phonenumber':null,
+		}
+
+		if (shipping != 'False')
+		{
+			shippinginfo.city = sh_form.city.value;
+			shippinginfo.state = sh_form.state.value;
+			shippinginfo.zipcode = sh_form.zipcode.value;
+			shippinginfo.address = sh_form.address.value;
+			shippinginfo.phonenumber = sh_form.phonenumber.value;
+		}
+
+		if (user == 'AnonymousUser')
+		{
+			userformdata.username = sh_form.username.value;
+			userformdata.email = sh_form.email.value;
+		}
+
+		console.log(userformdata);
+		console.log(shippinginfo);
+
+		const csrftoken = getCookie('csrftoken');
+		var url = '/process_order/';
+
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRFToken': csrftoken,
+			},
+			body: JSON.stringify({'form': userformdata, 'shipping': shippinginfo}),
+		})
+		.then((response)=>{
+		return response.json();
+		})
+		.then((data)=>{
+			console.log('Success:', data);
+			alert("Transaction completed");
+			window.location.href = "{% url 'store' %}"
+		})
+	}
+
+
+
+	function getCookie(name) {
+	let cookieValue = null;
+	if (document.cookie && document.cookie !== '') {
+		const cookies = document.cookie.split(';');
+		for (let i = 0; i < cookies.length; i++) {
+			const cookie = cookies[i].trim();
+			if (cookie.substring(0, name.length + 1) === (name + '=')) {
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
 </script>
 
 {% endblock content %}

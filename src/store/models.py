@@ -52,12 +52,12 @@ class Order(models.Model):
 	@property
 	def get_order_total(self):
 		orderitems = self.orderitem_set.all()
-		return sum([item.total_cost for item in orderitems])
+		return str(sum([item.total_cost for item in orderitems]))
 	
 	@property
 	def get_order_items(self):
 		orderitems = self.orderitem_set.all()
-		return sum([item.quantity for item in orderitems])
+		return str(sum([item.quantity for item in orderitems]))
 
 
 class OrderItem(models.Model):
@@ -78,6 +78,7 @@ class ShippingAdress(models.Model):
 	city = models.CharField(max_length=200, null=True)
 	state = models.CharField(max_length=200, null=True)
 	zipcode = models.CharField(max_length=200, null=True)
+	phonenumber = models.CharField(max_length=200, null=True)
 	date_added = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
