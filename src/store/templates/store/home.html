@@ -16,8 +16,8 @@
 					<img class="img-fluid" src="{{product.imageURL}}" alt="">
 					<h4 class="card-title p-2 mb-0 fn-z-t">{{product.name}}</h4>
 					<div class="border-top p-2 pt-3 user-select-none">
-						<a class="btn btn-outline-success fn-z" href="#">Add to cart</a>
-						<a class="btn btn-outline-secondary fn-z"  href="#">View</a>
+						<a class="btn btn-outline-success fn-z update-cart" data-product="{{product.id}}" data-action="add">Add to cart</a>
+						<a class="btn btn-outline-secondary fn-z" >View</a>
 						<div class="d-inline-block float-end prix-block">
 							<h6 class="d-inline-block text-danger me-1 mb-0 fn-z">30$</h6>
 							<h4 class="d-inline-block float-end mb-0 pt-1 fn-z">{{product.price|floatformat:2}}$</h4>

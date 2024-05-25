@@ -39,10 +39,21 @@
 					</button>
 				</ul>
 				<ul class="d-flex justify-content-center mb-0">
+					{% if user.is_authenticated %}
+					<li class="nav-item"><a class="btn btn-warning" href="#">Logout</a></li>
+					{% else %}
 					<li class="nav-item"><a class="btn btn-warning" href="#">Login</a></li>
+					{% endif %}
 					<li class="nav-item"><a class="nav-link cart-icon" href="{% url 'cart' %}">
 						<i class="fas fa-shopping-cart"></i>
 					</a></li>
+					<span id="cartitems-num">
+						{% if items > 99 %}
+						99+
+						{% else %}
+						{{items}}
+						{% endif %}
+					</span>
 				</ul>
 				
 			</div>
@@ -58,11 +69,14 @@
 	</div>
 
 
-
+	<script>
+		var user = '{{request.user}}';
+	</script>
 	<script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'store/js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'store/js/popper.min.js' %}"></script>
 	<script src="{% static 'store/js/fontawesome-all.min.js' %}"></script>
 	<script src="{% static 'store/js/store.js' %}"></script>
+	<script type="text/javascript" src="{% static 'store/js/cart.js' %}"></script>
 </body>
 </html>

@@ -50,8 +50,8 @@
 				<div class="d-flex-center-center" style="flex: 1;">
 					<span class="p-2 orderitem-quantity" >{{orderitem.quantity}}</span>
 					<div class="d-grid">
-						<a class="arrow-up-quantity"><i class="fas fa-arrow-up"></i></a>
-						<a class="arrow-down-quantity"><i class="fas fa-arrow-down"></i></a>
+						<a class="arrow-up-quantity update-cart" data-product="{{orderitem.product.id}}" data-action="add"><i class="fas fa-arrow-up"></i></a>
+						<a class="arrow-down-quantity update-cart" data-product="{{orderitem.product.id}}" data-action="remove"><i class="fas fa-arrow-down"></i></a>
 					</div>
 				</div>
 				<div class="d-flex-center-center " style="flex: 1;">{{orderitem.total_cost|floatformat:2}}$</div>
@@ -64,7 +64,5 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript" src="{% static 'store/js/cart.js' %}"></script>
 
 {% endblock content %}
