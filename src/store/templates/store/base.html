@@ -17,13 +17,13 @@
 
 	
 
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
+	<nav class="my-navbar">
+		<div class="navbar-content">
 			<a class="navbar-brand" href="{% url 'store' %}">
 				<img src="{% static 'store/images/blog-icon.png'%}" alt="" width="30px">
 				Store</a>
-			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<div class="d-flex align-items-center justify-content-between w-100">
+				<ul class="d-flex justify-content-center mb-0">
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="{% url 'store' %}">Home</a>
 					</li>
@@ -33,8 +33,12 @@
 					<li class="nav-item" hidden>
 						<a class="nav-link" href="#">link</a>
 					</li>
+					<input type="search" name="search" class="search-bar">
+					<button type="submit" class="btn btn-warning search-btn ">
+						<i class="text-dark  fas fa-search"></i>
+					</button>
 				</ul>
-				<ul class="navbar-nav">
+				<ul class="d-flex justify-content-center mb-0">
 					<li class="nav-item"><a class="btn btn-warning" href="#">Login</a></li>
 					<li class="nav-item"><a class="nav-link cart-icon" href="{% url 'cart' %}">
 						<i class="fas fa-shopping-cart"></i>

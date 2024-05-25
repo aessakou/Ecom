@@ -59,8 +59,8 @@
 					{% for item in orderitems %}
 					
 					<div class="d-flex align-items-stretch text-center p-2 m-1">
-						<div style="flex: 2;" class="">
-							<img class="summary-img img-thumbnail" src="{{item.product.imageURL}}" alt="">
+						<div style="flex: 2;" class="summary-img">
+							<img class="w-100" src="{{item.product.imageURL}}" alt="">
 						</div>
 						<div class="d-flex-center-center " style="flex: 2;">{{item.product}}</div>
 						<div class="d-flex-center-center " style="flex: 1;">{{item.product.price}}</div>
