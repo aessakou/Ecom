@@ -13,6 +13,10 @@ function getCookie(name) {
 	return cookieValue;
 }
 
+if (user === 'AnonymousUser') {
+	var cart = setCookieToBrowser();
+}
+
 
 var updateBtns = document.getElementsByClassName('update-cart');
 
@@ -26,7 +30,7 @@ for (let i = 0; i < updateBtns.length; i++)
 		
 		if (user === 'AnonymousUser')
 		{
-			console.log('USER is not logged in.');
+			CookieItems(productID, action);
 			
 		} else {
 			UpDateUserOrder(productID, action);
@@ -35,9 +39,33 @@ for (let i = 0; i < updateBtns.length; i++)
 	});
 }
 
+function CookieItems(productID, action)
+{
+	const csrftoken = getCookie('csrftoken');
+
+	let url = '/update_item/';
+	
+	fetch(url, {
+		method:'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-CSRFToken': csrftoken,
+		},
+		body:JSON.stringify({'productID':productID, 'action': action, 'cart': cart})
+	})
+	.then((response)=>{
+		return response.json();
+	})
+	.then((data)=>{
+		console.log('date:', data);
+		cart = data;
+		document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+		location.reload()
+	})
+}
+
 
 function UpDateUserOrder(productID, action) {
-	console.log("ProductID = ", productID, "action = ", action);
 	const csrftoken = getCookie('csrftoken');
 
 
@@ -59,4 +87,17 @@ function UpDateUserOrder(productID, action) {
 		location.reload()
 	})
 
+}
+
+
+function setCookieToBrowser()
+{
+	let cart = JSON.parse(getCookie('cart'));
+	if (cart == undefined)
+	{
+		cart = {}
+		document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+		location.reload();
+	}
+	return cart;
 }

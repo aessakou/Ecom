@@ -31,10 +31,38 @@ def cart(request):
 		items = order.get_order_items
 		total = order.get_order_total
 	else:
+		try:
+			cart = json.loads(request.COOKIES['cart'])
+		except:
+			cart = {}
+		
 		orderitems = []
 		items = 0
 		total = 0
 		order = []
+		for i in cart:
+			items += cart[i]['quantity']
+
+			print('cart[item]=', cart[i])
+			product = Product.objects.get(id=i)
+			total += (product.price * cart[i]['quantity'])
+
+
+			item = {
+				'product': {
+					'id':product.id,
+					'name':product.name,
+					'price':product.price,
+					'image':product.image,
+					'imageURL':product.imageURL,
+				},
+				'quantity':cart[i]['quantity'],
+				'total_cost':(product.price * cart[i]['quantity']),
+			}
+
+			orderitems.append(item)
+
+	
 	context = {
 		'title': 'Cart',
 		'orderitems': orderitems,
@@ -73,22 +101,43 @@ def updateItem(request):
 	productID = data['productID']
 	action = data['action']
 
-	customer = request.user.customer
-	product = Product.objects.get(id=productID)
-	order, created = Order.objects.get_or_create(customer=customer, complete=False)
-	orderitem, created = OrderItem.objects.get_or_create(order=order, product=product)
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		product = Product.objects.get(id=productID)
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		orderitem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-	if action == 'add':
-		orderitem.quantity = (orderitem.quantity + 1)
-	elif action == 'remove':
-		orderitem.quantity = (orderitem.quantity - 1)
+		if action == 'add':
+			orderitem.quantity = (orderitem.quantity + 1)
+		elif action == 'remove':
+			orderitem.quantity = (orderitem.quantity - 1)
 
-	orderitem.save()
-	
-	if orderitem.quantity == 0:
-		orderitem.delete()
+		orderitem.save()
+		
+		if orderitem.quantity == 0:
+			orderitem.delete()
+		response = "Item added to cart"
+	else:
+		cart = data['cart']
+		try:
+			if action == 'add':
+				cart[productID]['quantity'] += 1
+			elif action == 'remove':
+				cart[productID]['quantity'] -= 1
+				if cart[productID]['quantity'] <= 0:
+					newcart = {}
+					for i in cart:
+						if i != productID:
+							newcart[i] = cart[i]
+					cart = newcart
+					
+		except:
+			if action == 'add':
+				cart[productID] = {'quantity': 1}
+		print(cart)
+		response = cart
 
-	return JsonResponse("Item added to cart", safe=False)
+	return JsonResponse(response, safe=False)
 
 
 def processOrder(request):
@@ -118,6 +167,8 @@ def processOrder(request):
 				zipcode=data['shipping']['zipcode'],
 				phonenumber=data['shipping']['phonenumber'],
 			)
+	else:
+		pass
 
 	return JsonResponse("Payment complete!", safe=False)
 
