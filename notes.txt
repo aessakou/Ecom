@@ -1,3 +1,12 @@
 30/05/2024 03:54 AM
 
 Need to organize views file in store app
+
+
+30/05/2024 04:58 AM
+
+1 - Neet to add login form and logout function
+
+2 - Add the search bar algo by fetch method or a existing algo
+
+

@@ -6,36 +6,15 @@ import datetime
 
 from .models import *
 from .utils import *
-	
-
-def store(request):
-	# if request.user.is_authenticated:
-	# 	customer = request.user.customer
-	# 	order, created = Order.objects.get_or_create(customer=customer, complete=False)
-	# 	items = order.get_order_items
-	# else:
-	# 	data = ProcessAnonymoseUser(request)
-	# 	items = data['items']
-
-	# products = Product.objects.all()
-	# context = {
-	# 	'title': 'Store',
-	# 	'products': products,
-	# 	'items': items,
-	# 	'shipping': False,
-	# }
-	# return render(request, 'store/home.html', context)
-	return mainprocess(request, 'home')
 
 
-def cart(request):
-	return mainprocess(request, 'cart')
-
-
-def checkout(request):
-	return mainprocess(request, 'checkout')
-
-
+def getTemplate(request):
+	if request.path == '/':
+		return mainprocess(request, 'home')
+	elif request.path == '/cart/':
+		return mainprocess(request, 'cart')
+	elif request.path == '/checkout/':
+		return mainprocess(request, 'checkout')
 
 
 def updateItem(request):
@@ -90,26 +69,29 @@ def processOrder(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer
 		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		total = data['form']['total']
-		order.transaction_id = transactionID
-
-		if total == order.get_order_total:
-			order.complete = True
 		
-		order.save()
-
-		if order.shipping == True:
-			ShippingAdress.objects.create(
-				customer=customer,
-				order=order,
-				address=data['shipping']['address'],
-				city=data['shipping']['city'],
-				state=data['shipping']['state'],
-				zipcode=data['shipping']['zipcode'],
-				phonenumber=data['shipping']['phonenumber'],
-			)
 	else:
-		pass
+		customer, order = QuestOrder(request, data)
+
+
+	total = data['form']['total']
+	order.transaction_id = transactionID
+
+	if total == order.get_order_total:
+		order.complete = True
+	
+	order.save()
+
+	if order.shipping == True:
+		ShippingAdress.objects.create(
+			customer=customer,
+			order=order,
+			address=data['shipping']['address'],
+			city=data['shipping']['city'],
+			state=data['shipping']['state'],
+			zipcode=data['shipping']['zipcode'],
+			phonenumber=data['shipping']['phonenumber'],
+		)
 
 	return JsonResponse("Payment complete!", safe=False)
 

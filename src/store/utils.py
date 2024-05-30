@@ -88,3 +88,31 @@ def ProcessAnonymoseUser(request):
 		'orderitems':orderitems,
 	}
 	return context
+
+
+def QuestOrder(request, data):
+	cookieData = ProcessAnonymoseUser(request)
+	orderitems = cookieData['orderitems']
+	name = data['form']['name']
+	email = data['form']['email']
+	
+	customer, created = Customer.objects.get_or_create(email=email)
+
+	customer.name = name
+	customer.save()
+
+	order = Order.objects.create(
+		customer=customer,
+		complete=False, 
+	)
+
+	for item in orderitems:
+		product = Product.objects.get(id=item['product']['id'])
+
+		orderItem = OrderItem.objects.create(
+			product=product,
+			order=order,
+			quantity=item['quantity'],
+		)
+	
+	return customer, order
