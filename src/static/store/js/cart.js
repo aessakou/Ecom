@@ -57,7 +57,6 @@ function CookieItems(productID, action)
 		return response.json();
 	})
 	.then((data)=>{
-		console.log('date:', data);
 		cart = data;
 		document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
 		location.reload()
@@ -83,7 +82,6 @@ function UpDateUserOrder(productID, action) {
 		return response.json();
 	})
 	.then((data)=>{
-		console.log('date:', data);
 		location.reload()
 	})
 

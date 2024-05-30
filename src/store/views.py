@@ -5,95 +5,37 @@ import json
 import datetime
 
 from .models import *
-
+from .utils import *
+	
 
 def store(request):
-	if request.user.is_authenticated:
-		customer = request.user.customer
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		items = order.get_order_items
-	else:
-		items = 0
-	products = Product.objects.all()
-	context = {
-		'title': 'Store',
-		'products': products,
-		'items': items,
-		'shipping': False,
-	}
-	return render(request, 'store/home.html', context)
+	# if request.user.is_authenticated:
+	# 	customer = request.user.customer
+	# 	order, created = Order.objects.get_or_create(customer=customer, complete=False)
+	# 	items = order.get_order_items
+	# else:
+	# 	data = ProcessAnonymoseUser(request)
+	# 	items = data['items']
+
+	# products = Product.objects.all()
+	# context = {
+	# 	'title': 'Store',
+	# 	'products': products,
+	# 	'items': items,
+	# 	'shipping': False,
+	# }
+	# return render(request, 'store/home.html', context)
+	return mainprocess(request, 'home')
+
 
 def cart(request):
-	if request.user.is_authenticated:
-		customer = request.user.customer
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		orderitems = order.orderitem_set.all()
-		items = order.get_order_items
-		total = order.get_order_total
-	else:
-		try:
-			cart = json.loads(request.COOKIES['cart'])
-		except:
-			cart = {}
-		
-		orderitems = []
-		items = 0
-		total = 0
-		order = []
-		for i in cart:
-			items += cart[i]['quantity']
+	return mainprocess(request, 'cart')
 
-			print('cart[item]=', cart[i])
-			product = Product.objects.get(id=i)
-			total += (product.price * cart[i]['quantity'])
-
-
-			item = {
-				'product': {
-					'id':product.id,
-					'name':product.name,
-					'price':product.price,
-					'image':product.image,
-					'imageURL':product.imageURL,
-				},
-				'quantity':cart[i]['quantity'],
-				'total_cost':(product.price * cart[i]['quantity']),
-			}
-
-			orderitems.append(item)
-
-	
-	context = {
-		'title': 'Cart',
-		'orderitems': orderitems,
-		'items': items,
-		'total': total,
-		'order': order,
-		'shipping': False,
-	}
-	return render(request, 'store/cart.html', context)
 
 def checkout(request):
-	if request.user.is_authenticated:
-		customer = request.user.customer
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		orderitems = order.orderitem_set.all()
-		items = order.get_order_items
-		total = order.get_order_total
-	else:
-		orderitems = []
-		items = 0
-		total = 0
-		order = []
-	context = {
-		'title': 'Checkout',
-		'orderitems': orderitems,
-		'items': items,
-		'total': total,
-		'order': order,
-		'shipping': False,
-	}
-	return render(request, 'store/checkout.html', context)
+	return mainprocess(request, 'checkout')
+
+
 
 
 def updateItem(request):
@@ -134,14 +76,13 @@ def updateItem(request):
 		except:
 			if action == 'add':
 				cart[productID] = {'quantity': 1}
-		print(cart)
+
 		response = cart
 
 	return JsonResponse(response, safe=False)
 
 
 def processOrder(request):
-	print("Data =", request.body)
 
 	transactionID = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
