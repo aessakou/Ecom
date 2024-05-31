@@ -23,7 +23,8 @@
 	--greyblue: #9eb3c4;
 	--linkc: #3e103e;
 	--s-blue: #5ebcc6;
-	--bluegreen: #055160a0;
+	/* --bluegreen: #29899d; */
+	--bluegreen: #1481c1;
 
 
 	--nb-padd: 5px;
@@ -69,12 +70,20 @@ body.darkmode {
 	--dark: #ddd;
 }
 
+header {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+	min-width: 100%;
+	background: white;
+}
 
 .my-container {
 	width: 100%;
 	border: solid;
 	padding: 0 7vw;
 	margin: 0 auto;
+	margin-top: 56px;
 	max-width: 1400px;
 }
 
@@ -84,6 +93,8 @@ body.darkmode {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 56px;
+	border-bottom: 1px solid var(--dark-grey);
 }
 
 .my-navbar .navbar-content {
