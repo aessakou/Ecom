@@ -33,14 +33,17 @@
 						<li class="nav-item" hidden>
 							<a class="nav-link" href="#">link</a>
 						</li>
-						<input type="search" name="search" class="search-bar">
-						<button type="submit" class="btn btn-warning search-btn ">
+						<form method="post" id="search-bar-input">
+							{% csrf_token %}
+							<input type="search" name="search" class="search-bar">
+						</form>
+						<button class="btn btn-warning search-btn " id="search-bar-btn">
 							<i class="text-dark  fas fa-search"></i>
 						</button>
 					</ul>
 					<ul class="d-flex justify-content-center mb-0">
 						{% if user.is_authenticated %}
-						<li class="nav-item"><a class="btn btn-warning" href="#">Logout</a></li>
+						<li class="nav-item"><a class="btn btn-warning" id="logout-id">Logout</a></li>
 						{% else %}
 						<li class="nav-item"><a class="btn btn-warning" href="#">Login</a></li>
 						{% endif %}
@@ -74,12 +77,14 @@
 
 	<script>
 		var user = '{{request.user}}';
+
+		var logouthref = "{% url 'log_out' %}";
 	</script>
 	<script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'store/js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'store/js/popper.min.js' %}"></script>
 	<script src="{% static 'store/js/fontawesome-all.min.js' %}"></script>
-	<script src="{% static 'store/js/store.js' %}"></script>
+	<script type="text/javascript" src="{% static 'store/js/store.js' %}"></script>
 	<script type="text/javascript" src="{% static 'store/js/cart.js' %}"></script>
 </body>
 </html>

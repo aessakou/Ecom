@@ -6,7 +6,7 @@ from .models import *
 
 def mainprocess(request, page):
 	
-	dataProcessing = ProcessAnonymoseUser(request)
+	dataProcessing = ProcessCartData(request)
 	context = {'title': page,'shipping': False,}
 
 	if page == 'home':

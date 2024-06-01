@@ -141,3 +141,7 @@ ALLOWED_HOSTS = [
 	"172.23.164.81",
 	"127.0.0.1"
 ]
+
+
+LOGOUT_REDIRECT_URL = '/'
+

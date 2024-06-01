@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib import messages
+from django.template.loader import render_to_string
+from django.db.models import Q
 import json
 import datetime
 
@@ -94,5 +96,32 @@ def processOrder(request):
 		)
 
 	return JsonResponse("Payment complete!", safe=False)
+
+
+def searchHandling(request):
+
+	try:
+		data = json.loads(request.body)
+		contentS = data['content']
+		search_words = contentS.split()
+		query_obj = Q()
+		for word in search_words:
+			query_obj |= Q(name__icontains=word)
+		products = Product.objects.all()
+		results = products.filter(query_obj).distinct()
+		context = {
+			'title': 'Store',
+			'items': 'S',
+			'products': products,
+			'results': results,
+			'contentS':contentS,
+		}
+	except:
+		return mainprocess(request, 'home')
+		
+	rendered_html = render_to_string('store/search_results.html', context)
+
+	return JsonResponse({'rendered_html': rendered_html})
+	# return render(request, 'store/home.html', context)
 
 

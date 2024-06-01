@@ -27,6 +27,7 @@ for (let i = 0; i < updateBtns.length; i++)
 		let productID = this.dataset.product;
 		let action = this.dataset.action;
 
+		console.log('Update Cart...');
 		
 		if (user === 'AnonymousUser')
 		{
