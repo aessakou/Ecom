@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from django.template.loader import render_to_string
@@ -111,7 +111,6 @@ def searchHandling(request):
 		results = products.filter(query_obj).distinct()
 		context = {
 			'title': 'Store',
-			'items': 'S',
 			'products': products,
 			'results': results,
 			'contentS':contentS,
@@ -125,3 +124,13 @@ def searchHandling(request):
 	# return render(request, 'store/home.html', context)
 
 
+def product_view(request, product_id):
+
+	product = get_object_or_404(Product, pk=product_id)
+	images = product.imageURL
+	context = {
+		'title': 'View',
+		'product': product,
+		'images':images,
+	}
+	return render(request, 'store/view.html', context)
