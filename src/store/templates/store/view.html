@@ -17,16 +17,11 @@
 						<div class="silder-imgs mt-2">
 							<div class="silder-prev silder-disable "><span>&#10094;</span></div>
 							<div class="silder">
-								<img src="{{product.imageURL}}" alt="">
-								<img src="{% static 'images/aessakou.jpg' %}" alt="">
-								<img src="{{product.imageURL}}" alt="">
-								<img src="{% static 'images/aessakou.jpg' %}" alt="">
-								<img src="{{product.imageURL}}" alt="">
-								<img src="{% static 'images/aessakou.jpg' %}" alt="">
-								<img src="{{product.imageURL}}" alt="">
-								<img src="{% static 'images/aessakou.jpg' %}" alt="">
-								<img src="{{product.imageURL}}" alt="">
-								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+								{% for image in images %}
+
+								<img src="{{image.imageURL}}" alt="">
+
+								{% endfor %}
 							</div>
 							<div class="silder-next"><span>&#10095;</span></div>
 						</div>

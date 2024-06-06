@@ -127,13 +127,21 @@ def searchHandling(request):
 def product_view(request, product_id):
 
 	product = get_object_or_404(Product, pk=product_id)
-	images = product.imageURL
+	
+	try:
+		details = get_object_or_404(ProductDetails, product=product)
+		images = details.images.all()
+	except:
+		details = []
+		images = []
+		pass
 
 	data = ProcessCartData(request)
 	items = data['items']
 	context = {
 		'title': 'View',
 		'product': product,
+		'details':details,
 		'images':images,
 		'items':items,
 	}

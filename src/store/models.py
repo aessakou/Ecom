@@ -86,3 +86,28 @@ class ShippingAdress(models.Model):
 
 	def __str__(self):
 		return self.address
+
+class Image(models.Model):
+	image = models.ImageField(null=True, blank=True)
+
+	@property
+	def imageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
+	
+class ProductDetails(models.Model):
+	product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
+	images = models.ManyToManyField(Image, related_name='collections')
+	description = models.TextField(null=True)
+	quantity_dipo = models.IntegerField(default=1, null=True, blank=True)
+	shippingPrice = models.DecimalField(max_digits=7, decimal_places=2)
+	shippingCities = models.JSONField(default=list)
+
+
+	def __str__(self):
+		return self.product.name + '(Details)'
+	pass
+

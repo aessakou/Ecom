@@ -5,6 +5,7 @@ addEventListener('DOMContentLoaded', function() {
 
 
 	const baseImg = this.document.getElementById('baseimage-Win');
+	const imgContainer = this.document.querySelector('.img-window');
 	const silder = this.document.querySelector('.silder-imgs .silder');
 	const silderimgs = this.document.querySelectorAll('.silder-imgs .silder img');
 	const silderPrev = this.document.querySelector('.silder-imgs .silder-prev');
@@ -15,24 +16,26 @@ addEventListener('DOMContentLoaded', function() {
 	var itemsliding = 3;
 	var itemWidth = ((silder.scrollWidth) / (silderimgs.length));
 	var slideDistance = itemWidth;
-	zoomedIn = 'none';
+	// zoomedIn = 'none';
 	
 	
-	baseImg.addEventListener('mouseover', (e)=>{
+	baseImg.addEventListener('mousemove', (e)=>{
 		e.preventDefault();
-		if (zoomedIn == false) {
-			baseImg.style.width = (baseImg.offsetWidth * 2) + 'px';
-			baseImg.style.height = (baseImg.offsetHeight * 2) + 'px';
-			zoomedIn = true;
-		}
+		const rect = imgContainer.getBoundingClientRect();
+		const x = e.clientX - rect.left; // x position within the element
+		const y = e.clientY - rect.top;  // y position within the element
+	
+		const xPercent = x / rect.width * 100;
+		const yPercent = y / rect.height * 100;
+		
+		baseImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+		baseImg.style.transform = 'scale(2)'; // adjust the scale as needed
 	});
-	baseImg.addEventListener('mouseout', (ev)=> {
+	baseImg.addEventListener('mouseleave', (ev)=> {
 		ev.preventDefault();
-		if (zoomedIn == true) {
-			baseImg.style.width = (baseImg.offsetWidth / 2) + 'px';
-			baseImg.style.height = (baseImg.offsetHeight / 2) + 'px';
-			zoomedIn = false;
-		}
+	
+		baseImg.style.transform = 'scale(1)';
+		baseImg.style.transformOrigin = 'center center';
 	});
 	
 	silderimgs.forEach((item, index)=>{
