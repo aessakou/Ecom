@@ -4,23 +4,38 @@
 {% block content %}
 {% load static %}
 
-	<div class="product-view row m-5 mt-2 mb-0">
-		<div class="product col-md-6">
+	<div class="product-view row mt-2 mb-0">
+		<div class="product">
 			<div class="card-group">
 				<div class="card p-2">
-					<h1>Images</h1>
 					<div class="product-imgs">
 						<!-- <img src="{{product.imageURL}}" alt="" height="100vw"> -->
 						<!-- style="background-image: url('{{product.imageURL}}'); background-size: cover;" -->
 						<div class="img-window" >
-							<img src="{{product.imageURL}}" alt="">
+							<img src="{{product.imageURL}}" alt="" id="baseimage-Win">
+						</div>
+						<div class="silder-imgs mt-2">
+							<div class="silder-prev silder-disable "><span>&#10094;</span></div>
+							<div class="silder">
+								<img src="{{product.imageURL}}" alt="">
+								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+								<img src="{{product.imageURL}}" alt="">
+								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+								<img src="{{product.imageURL}}" alt="">
+								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+								<img src="{{product.imageURL}}" alt="">
+								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+								<img src="{{product.imageURL}}" alt="">
+								<img src="{% static 'images/aessakou.jpg' %}" alt="">
+							</div>
+							<div class="silder-next"><span>&#10095;</span></div>
 						</div>
 					</div>
 					<div class="view-btn"></div>
 				</div>
 			</div>
 		</div>
-		<div class="product-details col-md-6">
+		<div class="product-details">
 			<div class="card-group">
 				<div class="card p-2">
 					<h1 class="card-title m-3">Description</h1>
@@ -37,9 +52,14 @@
 							bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
 						</p>
 					</div>
+					<div class="mt-2 text-center">
+						<a class="btn btn-success w-50">Add To Cart</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
+	<script src="{% static 'store/js/view.js' %}"></script>
 {% endblock content %}

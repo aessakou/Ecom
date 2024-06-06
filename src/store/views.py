@@ -128,9 +128,13 @@ def product_view(request, product_id):
 
 	product = get_object_or_404(Product, pk=product_id)
 	images = product.imageURL
+
+	data = ProcessCartData(request)
+	items = data['items']
 	context = {
 		'title': 'View',
 		'product': product,
 		'images':images,
+		'items':items,
 	}
 	return render(request, 'store/view.html', context)
