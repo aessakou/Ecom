@@ -9,6 +9,10 @@ urlpatterns = [
 	path('cart/', views.getTemplate, name='cart'),
 	path('checkout/', views.getTemplate, name='checkout'),
 	path('view/<int:product_id>/', views.product_view, name='view'),
+	
+	path('magazine/', views.magazine, name='magazine'),
+	path('create_product/', views.createProduct, name='addproduct'),
+	
 
 	path('update_item/', views.updateItem, name='update_item'),
 	path('process_order/', views.processOrder, name='process_order'),

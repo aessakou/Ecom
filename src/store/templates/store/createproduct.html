@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'store/css/store.css' %}">
+	<link rel="shortcut icon" href="{% static 'store/images/favicon.ico' %}">
+	<title>create Product</title>
+</head>
+<body>
+	<div class="create-product-container">
+		<div class="create-product-box">
+			<form class="row p-3">
+				<div class="col-md-5">
+					<div class="col-md-12 pt-1 pb-1 baseimg">
+						<img src="{% static 'images/hacker.png' %}" alt="" class="img-fluid">
+					</div>
+					<div class="col-md-12 m-auto mt-1">
+						<div class="d-flex justify-content-around">
+							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+						</div>
+					</div>
+					<div class="col-md-12 m-auto mt-2">
+						<input type="text" name="name" placeholder="Product name" required class="form-control">
+					</div>
+					<div class="row mt-2">
+						<div class="col-md-6 m-auto">
+							<input type="number" name="price" placeholder="Product price" required class="form-control">
+						</div>
+						<div class="col-md-6 m-auto">
+							<input type="number" name="price" placeholder="Product price" required class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-7 bg-danger">
+					<h1>hi</h1>
+					<textarea name="description" cols="88" rows="7" minlength="100" maxlength="1000" placeholder="Description" class="form-control"></textarea>
+				</div>
+				
+				<div class="create-product-btns p-3 pb-0">
+					<a class="btn btn-secondary ">Cancel</a>
+					<button class="btn btn-success ">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'store/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'store/js/popper.min.js' %}"></script>
+	<script src="{% static 'store/js/fontawesome-all.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'store/js/magazine.js' %}"></script>
+</body>
+</html>

@@ -6,8 +6,7 @@ if (logout_id) {
 
 	logout_id.addEventListener('click', function() {
 		const overlay = document.createElement('div');
-	
-		console.log('div')
+
 		overlay.classList.add('logoutwin')
 		const modal = document.createElement('div');
 		modal.classList.add('modal');

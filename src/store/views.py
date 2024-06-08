@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
-from django.contrib import messages
+from django.contrib import messages, admin
 from django.template.loader import render_to_string
 from django.db.models import Q
 import json
@@ -146,3 +146,19 @@ def product_view(request, product_id):
 		'items':items,
 	}
 	return render(request, 'store/view.html', context)
+
+
+def magazine(request):
+	if not request.user.is_authenticated:
+		return redirect('admin_login')
+	products = Product.objects.all()
+
+	context = {
+		'title': 'Magazine',
+		'products': products,
+	}
+	return render(request, 'store/magazine.html', context)
+
+
+def createProduct(request):
+	return render(request,"store/createproduct.html")

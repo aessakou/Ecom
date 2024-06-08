@@ -173,3 +173,34 @@
 </script>
 
 ##>>END
+
+
+##>>CREATE PRODUCT FORM
+
+<div class="col-md-5 m-auto">
+						<input type="text" name="name" placeholder="Product name" required class="form-control">
+					</div>
+					<div class="col-md-2 m-auto">
+						<input type="number" name="quantity" placeholder="Quantity" required class="form-control">
+					</div>
+					<div class="col-md-2 m-auto">
+						<input type="number" name="price" placeholder="Product price" required class="form-control">
+					</div>
+					<div class="col-md-2 m-auto">
+						<input type="number" name="shprice" placeholder="Shipping price" required class="form-control">
+					</div>
+					<!-- <div class="col-md-4 m-auto">
+						<input type="file" name="image" accept="image/*" required class="form-control">
+					</div>
+					<div class="col-md-3 m-auto">
+						<input type="file" name="image" accept="image/*" required class="form-control">
+					</div> -->
+					<div class="col-md-3 m-auto">
+						<label>Digital Product?</label>
+						<select name="digital">
+							<option value="false">No</option>
+							<option value="true">Yes</option>
+						</select>
+					</div>
+
+##>>END

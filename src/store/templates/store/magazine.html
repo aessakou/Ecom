@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'store/css/store.css' %}">
+	<link rel="shortcut icon" href="{% static 'store/images/favicon.ico' %}">
+	{% if title %}
+	<title>Magazine | {{title}}</title>
+	{% else %}
+	<title>Magazine</title>
+	{% endif %}
+</head>
+<body>
+	
+
+	<header>
+		<nav class="my-navbar">
+			<div class="navbar-content">
+				<a class="navbar-brand" href="{% url 'magazine' %}">
+					<img src="{% static 'store/images/blog-icon.png'%}" alt="" width="30px">
+					Store</a>
+				<div class="d-flex align-items-center justify-content-between w-100">
+					<ul class="d-flex justify-content-center mb-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{% url 'magazine' %}">Home</a>
+						</li>
+						<li class="nav-item" hidden>
+							<a class="nav-link" href="#">link</a>
+						</li>
+						<li class="nav-item" hidden>
+							<a class="nav-link" href="#">link</a>
+						</li>
+						<form method="post" id="search-bar-input">
+							{% csrf_token %}
+							<input type="search" name="search" class="search-bar">
+						</form>
+						<button class="btn btn-warning search-btn " id="magazine-searchbar">
+							<i class="text-dark  fas fa-search"></i>
+						</button>
+					</ul>
+					<ul class="d-flex justify-content-center mb-0">
+						
+						<li class="nav-item"><a class="btn btn-success" href="{% url 'addproduct' %}" id="add-product-id">
+							Add Product +
+						</a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	<div class="my-container">
+
+		<div class="mb-5">
+
+			<div class="card border mt-3 p-1">
+				<div class="product-list-titles">
+					<h6>Products list:</h6>
+					<span>Product name</span>
+					<span>Product price</span>
+					<span>Shipping price</span>
+					<span>Quantity</span>
+				</div>
+
+			</div>
+			{% for product in products %}
+			<div class="card border mt-1">
+				<div class="product-list">
+					<div class="image-container">
+						<img src="{{product.imageURL}}" alt="Product Image">
+						<div class="overlay-text">Click here to zoom in</div>
+					</div>
+					<span class="">{{product.name}}</span>
+					<span class="">{{product.price}}$</span>
+					<span class="">10$</span>
+					<span class="">x19</span>
+					<div class="d-grid">
+						<a class="btn btn-info">Details</a>
+						<a class="btn btn-secondary">Edit</a>
+						<a class="btn btn-danger">Delete</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+		<!-- <div class="create-product-container">
+			<div class="create-product-box">
+				<form class="row p-3">
+					<div class="col-md-5">
+						<div class="col-md-12 pt-1 pb-1 baseimg">
+							<img src="{% static 'images/hacker.png' %}" alt="" class="img-fluid">
+						</div>
+						<div class="col-md-12 m-auto mt-1">
+							<div class="d-flex justify-content-around">
+								<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+								<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+								<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+								<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+								<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							</div>
+						</div>
+						<div class="col-md-12 m-auto mt-2">
+							<input type="text" name="name" placeholder="Product name" required class="form-control">
+						</div>
+						<div class="row mt-2">
+							<div class="col-md-6 m-auto">
+								<input type="number" name="price" placeholder="Product price" required class="form-control">
+							</div>
+							<div class="col-md-6 m-auto">
+								<input type="number" name="price" placeholder="Product price" required class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7 bg-danger">
+						<h1>hi</h1>
+						<textarea name="description" cols="88" rows="7" minlength="100" maxlength="1000" placeholder="Description" class="form-control"></textarea>
+					</div>
+					
+					<div class="create-product-btns p-3 pb-0">
+						<a class="btn btn-secondary ">Cancel</a>
+						<button class="btn btn-success ">Save</button>
+					</div>
+				</form>
+			</div>
+		</div> -->
+	</div>
+
+
+
+	<script src="{% static 'store/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'store/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'store/js/popper.min.js' %}"></script>
+	<script src="{% static 'store/js/fontawesome-all.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'store/js/magazine.js' %}"></script>
+</body>
+</html>
