@@ -12,18 +12,20 @@
 <body>
 	<div class="create-product-container">
 		<div class="create-product-box">
-			<form class="row p-3">
+			<form class="row p-3" id="createpro-form-id">
 				<div class="col-md-5">
 					<div class="col-md-12 pt-1 pb-1 baseimg">
-						<img src="{% static 'images/hacker.png' %}" alt="" class="img-fluid">
+						<img src="{% static 'images/default_img.png' %}" alt="" class="img-thumbnail" aria-required="false">
+						<a><i class="fas fa-plus"></i></a>
+						<input type="file" name="image" accept="image/*" id="base-img-id" class="d-none" hidden>
 					</div>
 					<div class="col-md-12 m-auto mt-1">
 						<div class="d-flex justify-content-around">
-							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
-							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
-							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
-							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
-							<img src="{% static 'images/hacker.png' %}" alt="" width="15%">
+							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
+							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
+							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
+							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
+							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
 						</div>
 					</div>
 					<div class="col-md-12 m-auto mt-2">
@@ -38,13 +40,27 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-7 bg-danger">
-					<h1>hi</h1>
-					<textarea name="description" cols="88" rows="7" minlength="100" maxlength="1000" placeholder="Description" class="form-control"></textarea>
+				<div class="col-md-7 mt-2">
+					<textarea name="description" cols="88" rows="7" minlength="100" maxlength="1000" placeholder="Description" class="form-control" required></textarea>
+					<div class="row mt-2">
+						<div class="col-md-6 pt-1 pb-1 m-auto">
+							<label for="is_digital">Digital product?</label>
+							<select name="digital" id="is_digital" class="form-control-sm" required>
+								<option value="false">No</option>
+								<option value="true">Yes</option>
+							</select>
+						</div>
+						<div class="col-md-6 m-auto">
+							<input id="shprice-id" type="number" name="shprice" placeholder="Shipping price" required class="form-control">
+						</div>
+					</div>
+					<div class="col-md-12 m-auto mt-2">
+						<input id="shcities-id" type="text" name="shcities" placeholder="Shipping cities" required class="form-control">
+					</div>
 				</div>
 				
 				<div class="create-product-btns p-3 pb-0">
-					<a class="btn btn-secondary ">Cancel</a>
+					<a class="btn btn-secondary " href="{% url 'magazine' %}">Cancel</a>
 					<button class="btn btn-success ">Save</button>
 				</div>
 			</form>
