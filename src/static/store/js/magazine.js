@@ -75,13 +75,44 @@ addEventListener('DOMContentLoaded', (e)=>{
 
 
 	const uploadImgs = document.querySelector('.cp-slider .imgtoupload');
-
+	var imgcount = 1;
 	if (uploadImgs && productForm) {
-		uploadImgs.addEventListener('click', function(){
+		uploadImgs.addEventListener('click', function(e){
+			
+			var newinput = document.createElement('input');
 			var productimg = document.createElement('img');
+			var divelem = document.createElement('div');
+
+			divelem.appendChild(newinput);
+			divelem.appendChild(productimg);
+
+			newinput.type = 'file';
+			newinput.name = 'image' + imgcount;
+			newinput.accept = 'image/*';
+			newinput.id = 'pimgs-id' + imgcount;
+			newinput.classList.add('d-none');
+			newinput.click();
+			newinput.addEventListener('change', uploadfile);
 			productimg.classList.add('product-imgs');
-			productimg.src = '/static/images/default_img.png';
-			productForm.children[0].children[1].children[0].appendChild(productimg);
+			
+			function uploadfile(event) {
+				event.preventDefault();
+				let file = event.target.files[0];
+				if (file) {
+					let reader = new FileReader();
+					reader.onload = function (e) {
+						productimg.src = e.target.result;
+						if (productimg != ''){
+							productForm.children[0].children[1].children[0].appendChild(divelem);
+							imgcount++;
+						}
+					}
+					reader.readAsDataURL(file);
+				}
+			}
+
 		});
+
+		
 	}
 });
