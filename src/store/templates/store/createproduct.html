@@ -19,13 +19,12 @@
 						<a><i class="fas fa-plus"></i></a>
 						<input type="file" name="image" accept="image/*" id="base-img-id" class="d-none" hidden>
 					</div>
-					<div class="col-md-12 m-auto mt-1">
-						<div class="d-flex justify-content-around">
-							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
-							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
-							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
-							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
-							<img src="{% static 'images/default_img.png' %}" alt="" width="15%">
+					<div class="col-md-12 m-auto mt-1 overflow-hidden">
+						<div class="cp-slider">
+							<div class="imgtoupload">
+								<img src="{% static 'images/default_img.png' %}" alt="">
+								<a><i class="fas fa-upload"></i></a>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-12 m-auto mt-2">

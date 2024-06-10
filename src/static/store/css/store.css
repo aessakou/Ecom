@@ -660,6 +660,8 @@ header {
 :root {
 	--img-width: 32vw;
 	--img-heigth: calc(var(--img-width)/1.5);
+	--p-imgs-w: 5vw;
+	--p-imgs-h: var(--p-imgs-w);
 }
 
 .create-product-box .baseimg img {
@@ -706,11 +708,54 @@ header {
 	text-shadow: 0 0 3px var(--dark);
 }
 
+.create-product-box .cp-slider {
+	width: 100%;
+	display: flex;
+	justify-content:flex-start;
+	align-items: center;
+}
 
+.create-product-box .cp-slider .imgtoupload img {
+	min-width: var(--p-imgs-w);
+	max-width: var(--p-imgs-w);
+	min-height: var(--p-imgs-h);
+	max-height: var(--p-imgs-h);
+	margin: 0 6px;
+}
+
+.create-product-box .cp-slider .product-imgs {
+	min-width: var(--p-imgs-w);
+	max-width: var(--p-imgs-w);
+	min-height: var(--p-imgs-h);
+	max-height: var(--p-imgs-h);
+
+	margin: 0 6px;
+}
+
+.create-product-box .cp-slider .imgtoupload {
+	position: relative;
+	display: inline-block;
+}
+
+.create-product-box .cp-slider .imgtoupload a {
+	display: none;
+	position: absolute;
+	width: calc(100% - 12px);
+	height: 100%;
+	top: 0;
+	left: 6px;
+}
+
+.create-product-box .cp-slider .imgtoupload:hover a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid;
+}
 
 .create-product-box textarea {
-	max-height: 40vh;
-	min-height: 10vh;
+	max-height: 26.5vw;
+	min-height: 105px;
 }
 
 /* END MAGAZINE */

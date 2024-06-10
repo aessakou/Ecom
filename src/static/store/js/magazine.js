@@ -49,19 +49,39 @@ addEventListener('DOMContentLoaded', (e)=>{
 	}
 
 	const isDigital = document.getElementById('is_digital');
+	const productForm = document.getElementById('createpro-form-id');
 
-	if (isDigital) {
+	if (isDigital && productForm) {
 		isDigital.addEventListener('change', function(e){
 			e.preventDefault();
-			const productForm = document.getElementById('createpro-form-id');
 			if (productForm.digital.value == 'false') {
-				productForm.shprice.classList.remove('d-none');
-				productForm.shcities.classList.remove('d-none');
+				if (productForm.children[1].children[1].children[1]) {
+					productForm.children[1].children[1].children[1].innerHTML = '<input id="shprice-id" type="number" name="shprice" placeholder="Shipping price" required class="form-control">';
+				}
+				if (productForm.children[1].children[2]) {
+					productForm.children[1].children[2].innerHTML = '<input id="shcities-id" type="text" name="shcities" placeholder="Shipping cities" required class="form-control">';
+				}
 			}
 			else {
-				productForm.shprice.classList.add('d-none');
-				productForm.shcities.classList.add('d-none');
+				if (productForm.children[1].children[1].children[1]) {
+					productForm.children[1].children[1].children[1].innerHTML = '';
+				}
+				if (productForm.children[1].children[2]) {
+					productForm.children[1].children[2].innerHTML = '';
+				}
 			}
+		});
+	}
+
+
+	const uploadImgs = document.querySelector('.cp-slider .imgtoupload');
+
+	if (uploadImgs && productForm) {
+		uploadImgs.addEventListener('click', function(){
+			var productimg = document.createElement('img');
+			productimg.classList.add('product-imgs');
+			productimg.src = '/static/images/default_img.png';
+			productForm.children[0].children[1].children[0].appendChild(productimg);
 		});
 	}
 });
