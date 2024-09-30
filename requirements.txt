@@ -1,6 +1,5 @@
 asgiref==3.8.1
 attrs==23.2.0
-backports.zoneinfo==0.2.1
 Brotli==1.1.0
 crispy-bootstrap5==2024.2
 dj-database-url==2.2.0
