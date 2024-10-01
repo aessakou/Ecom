@@ -29,6 +29,11 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://ecom-qmet.onrender.com',  # Add your domain or IP here
+]
+
+
 
 # Application definition
 
